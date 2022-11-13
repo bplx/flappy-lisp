@@ -15,3 +15,6 @@ It was impressive to me, at least, because i'm very new to Common Lisp.
 
 ## Credits
 Built with cl-raylib by longlene. Thanks!
+
+## Contact
+You can email me at dexters@sdf.org, if you like.
