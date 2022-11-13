@@ -1,0 +1,52 @@
+(load "~/quicklisp/setup.lisp")
+(ql:quickload :cffi)
+(ql:quickload :3d-vectors)
+(ql:quickload :3d-matrices)
+(load "./lib/cl-raylib/cl-raylib.asd")
+(require "cl-raylib")
+
+(defpackage :flappy
+  (:use :cl :raylib :3d-vectors)
+  (:export #:main))
+
+(in-package :flappy)
+
+(defun main ()
+  
+  (let ((screen-width 800)
+	(screen-height 450)
+	(title "flappy lisp"))
+    
+    (with-window (screen-width screen-height title)
+		 (init-audio-device)
+		 (let* ((box-a (make-rectangle :x 0 :y (/ screen-height 2)
+					       :width 50 :height 50))
+			(box-b (make-rectangle :x 0 :y 0
+					       :width 40 :height 40))
+			(vely 0)
+			(gravity 0.1)
+			(dt 0))
+		   
+		   (loop
+		    
+		    (if (window-should-close) (return))
+
+                    (setf (rectangle-x box-a) (- (get-mouse-x) (/ (rectangle-width box-a) 2)))
+
+
+		    
+		    (incf vely gravity)
+		    
+		    (if (is-key-pressed +key-space+)
+			(progn
+		          (setf vely (- 500))))
+
+		    
+		    (incf (rectangle-y box-a) (* vely dt))
+		    
+       
+		    (with-drawing
+		     (clear-background +raywhite+)
+		     (draw-rectangle-rec box-a +gold+)
+		     (draw-text (write-to-string vely) 10 10 20 +lightgray+))
+		    (setf dt (get-frame-time)))))))
