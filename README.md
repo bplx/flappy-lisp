@@ -1,3 +1,5 @@
+# Disclaimer
+I just found out about ASDF, i should have used that for the build OOOPS. Possible update in future with it
 # flappy-lisp
 My first game in Common Lisp!
 
