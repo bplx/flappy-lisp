@@ -1,5 +1,5 @@
 # Disclaimer
-I just found out about ASDF, i should have used that for the build OOOPS. Possible update in future with it
+I should have just used Shinmera/deploy for the build system (facepalm..)
 # flappy-lisp
 My first game in Common Lisp!
 
